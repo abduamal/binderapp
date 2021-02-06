@@ -10,7 +10,7 @@ class DocsController < ApplicationController
     end
 
     def new
-        @doc = Doc.new
+        @doc = current_user.docs.build
     end
 
     def create
@@ -24,7 +24,7 @@ class DocsController < ApplicationController
                     #(ie) .find(params)
                 # POST request is passed via the form, usually
                     #(ie) .new(params)
-        @doc = Doc.new(doc_params)
+        @doc = current_user.docs.build(doc_params)
         # redirect vs. render
         # redirect is a HTTP refresh and all content on the page is lost
         # render does not refresh the page
