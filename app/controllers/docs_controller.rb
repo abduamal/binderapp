@@ -39,10 +39,17 @@ class DocsController < ApplicationController
     def edit 
     end
 
-    def update
+    def update 
+        if @doc.update(doc_params)
+            redirect_to @doc
+        else
+            render 'edit'
+        end
     end
 
     def destroy
+        @doc.destroy
+        redirect_to docs_path
     end
 
     private
